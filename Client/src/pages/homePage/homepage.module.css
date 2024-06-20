@@ -1,0 +1,172 @@
+.title {
+  font-weight: 600;
+  font-size: 28px;
+  margin: 0 0 2rem 0;
+  padding-top: 2rem;
+}
+
+/* banner 1 */
+.banner1 {
+  background-image: url("../../assets/images/bannerHome1.png");
+  background-size: cover;
+  width: 100%;
+  height: 410px;
+  margin-bottom: 4rem;
+}
+
+.banner1 h1 {
+  font-weight: 600;
+  color: white;
+  margin: 3rem 0 0 8rem;
+}
+
+.banner1 p {
+  color: white;
+  margin: 0 4rem 1.5rem 8rem;
+}
+/* end banner 1 */
+
+/* kategori donasi */
+.containerKategoriDonasi {
+  margin: 0 0 2rem 0;
+  padding: 0 2rem 0 2rem;
+}
+
+.kategoriDonasi {
+  z-index: 0;
+}
+
+.cardCategory {
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.itemCategory {
+  font-size: 20px;
+}
+/*end kategori donasi */
+
+/* card rekomendasi */
+.containerCardRec {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.containerCardRec .title {
+  padding: 2rem 0 0 4rem;
+}
+
+.carousell {
+  padding: 0 6rem 0 6rem;
+  align-items: center;
+}
+
+.carouselItem {
+  margin-bottom: 1rem;
+}
+/* end card rekomendasi */
+
+/* Banner 2 */
+.containerBanner2 {
+  width: 100%;
+  margin: 0;
+}
+.banner2 {
+  background-image: url(../../assets/images/bannerHome2.png);
+  background-size: cover;
+  margin: 4rem 0 2rem 0;
+  padding: 5rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.imageBanner2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner2 h1 {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.banner2 p {
+  color: white;
+  margin-top: 1rem;
+}
+/* End Banner 2 */
+
+/* card PilihanDermaCeria */
+.containerCardPilihan {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.titleDesc {
+  padding: 1rem 0 2rem 0;
+}
+
+.titleDesc .title {
+  text-align: center;
+}
+
+.titleDesc p {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+/* End card PilihanDermaCeria */
+
+/* Banner 3 */
+.banner3 {
+  background-image: url(../../assets/images/bannerHome3.png);
+  background-size: cover;
+  width: 100%;
+  /* margin: 2rem 0 0 0; */
+  padding: 5rem;
+}
+
+.banner3 h1 {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: center;
+  font-size: 48px;
+}
+
+.banner3 p {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* End Banner 3 */
+
+/* Brand Peduli */
+.containerBrandPeduli {
+  /* margin-top: 6rem; */
+}
+
+.cardBrandPeduli Row {
+  width: 100%;
+}
+
+.containerBrandPeduli .title {
+  margin-bottom: 5rem;
+}
+
+.cardBrandPeduli {
+  padding: 2rem 0 7rem 0;
+  width: 100%;
+}
+
+.titleBrandPeduli {
+  margin-top: 2rem;
+}
+/* End Brand Peduli */

@@ -1,0 +1,48 @@
+.CardBlog {
+  max-weight: 100%;
+  margin: 10px 10px 10px 5px;
+  margin-bottom: 2rem;
+  border: none;
+}
+
+.imageCard {
+  padding: 0.5rem;
+  height: 180px;
+  position: relative;
+}
+
+.imageCard img {
+  object-fit: cover;
+  border-radius: 10px 10px 10px 10px; 
+  width: 100%;
+  height: 100%;
+  object-position: top;
+}
+
+.textCard {
+  font-size: 12px;
+  font-weight: auto;
+  margin-top: -10px;
+  margin-bottom: -5px;
+  text-align: left;
+}
+
+.labelCard {
+  font-size: 12px;
+  color:grey;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-left: -10px;
+  margin-right: 34px;
+  display: inline-block;
+}
+
+.btnSelengkapnya {
+  font-size: 11px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 0rem;
+}

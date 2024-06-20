@@ -1,0 +1,155 @@
+/* Ensure the main content has enough left margin */
+.mainContent {
+  margin-left: 250px; /* Adjust this to match your sidebar width */
+  padding: 20px; /* Optional padding */
+}
+
+.h1Title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.h1SubTitle {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.input-container {
+  position: relative;
+  width: 100%; /* Changed width to 100% to occupy full width of its container */
+  max-width: 467px; /* Added max-width to maintain responsiveness */
+  margin-left: auto; /* Centering the input container */
+  margin-right: auto; /* Centering the input container */
+}
+
+.input-container img {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 20px;
+}
+
+.input-container input {
+  width: calc(100% - 40px); /* Adjusted input width to occupy remaining space */
+  padding-left: 40px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  width: 28.5rem;
+  height: 38px;
+  box-shadow: none;
+}
+
+
+.input {
+  margin-left: 0.5rem;
+}
+
+.cardMargin {
+  margin-bottom: 1rem;
+}
+
+.card {
+  width: 22rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 5px;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btnEdit,
+.btnDelete {
+  float: right;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 20%;
+  margin-left: 0.5rem;
+}
+
+.addButton {
+  float: right;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: auto;
+  margin: 0 20px 0 0;
+
+}
+
+@media (max-width: 768px) {
+  .h1Title,
+  .h1SubTitle,
+  .cardText {
+    text-align: center;
+  }
+}
+
+.CardImg {
+  width: 18.5rem;
+  height: auto;
+  margin: 0;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17);
+}
+
+.labelCard {
+  display: inline-block;
+  font-size: 0.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+  background-color: grey;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.imageCard {
+  padding: 0.5rem;  
+  height: 180px; 
+  margin-bottom: -20px;
+  position: relative;
+}
+
+.imageCard img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: top;
+}
+
+.titleCard {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: -20px;
+  margin-bottom: -5px; 
+}
+
+.progressBar {
+  padding: 1rem 0 0.5rem 0;
+}
+
+.amount {
+  font-size: 11px;
+  padding-bottom: 1rem;
+}
+
+.amountCard {
+  padding-top: 8px;
+}
+
+.profileAndButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0rem;
+}

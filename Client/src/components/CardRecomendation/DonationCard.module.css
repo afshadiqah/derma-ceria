@@ -1,0 +1,53 @@
+.cardRec {
+  width: 21rem;
+  height: auto;
+  margin: 10px 5px 10px 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17);
+}
+
+.imageCard {
+  padding: 0.5rem;
+}
+
+.titleCard {
+  font-size: 18px;
+  font-weight: 600;
+  /* padding-bottom: 0.5rem; */
+}
+
+.labelCard {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white;
+  background-color: grey;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.progressBar {
+  padding: 1rem 0 0.5rem 0;
+}
+
+.amount {
+  font-size: 11px;
+  padding-bottom: 1rem;
+}
+
+.amountCard {
+  padding-top: 8px;
+}
+
+.profileAndButton{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnDonasi {
+  max-width: 100%;
+  margin-top: 3px;
+  /* width: 100%; */
+  /* padding: 1rem 0 0 0; */
+}

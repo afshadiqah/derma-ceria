@@ -1,0 +1,33 @@
+.container {
+    margin-top: -10rem;
+    margin-bottom: 50px;
+    max-height: 330px;
+    width: 35em;
+    background-color: #f7f3e8;
+    padding: 3rem;
+    border-radius: 0.25rem;
+    /* margin-left: auto; */
+    margin-right:10rem;
+  }
+  
+  .cardImg {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .eventInfo {
+    font-size: 15px;
+  }
+  
+  .eventInfo p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .eventInfo strong {
+    font-weight: bold;
+  }
+  
+  .eventInfo span {
+    margin-left: 12px;
+  }
+  

@@ -1,0 +1,236 @@
+.body-payment-donasi {
+  background-color: var(--secondary-color);
+  font-family: Helvetica, sans-serif;
+}
+
+.title-donasiUang {
+  text-align: left;
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 10px;
+}
+
+.title-donasiUang h2{
+  text-align: left;
+  padding-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.custom-h4 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.custom-h3 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container-donasiUang {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.container-donasiUang-left,
+.container-donasiUang-right {
+  background-color: white;
+  border-radius: 15px;
+  width: 48%;
+  padding: 35px;
+}
+
+.container-donasiUang-left {
+  width: 55%;
+  height: 100%;
+}
+
+.container-donasiUang-right {
+  background-color: white;
+  border-radius: 15px;
+  width: 42%;
+  padding: 35px;
+}
+
+.title-form h3,
+.title-Pembayaran h3 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.buttonAnonym {
+  color: grey;
+  margin-bottom: 20px;
+}
+
+.form-donasiUang .form-group-donasiUang {
+  margin-bottom: 20px;
+}
+
+.button-nominal {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17), 1px 0px 3px rgba(0, 0, 0, 0.17);
+  outline: none;
+}
+
+.button-nominal:hover {
+  background-color: #f8b22d;
+}
+
+.button-nominal:focus,
+.button-nominal:active {
+  background-color: #f8b22d;
+  border: none; 
+  box-shadow: none; 
+  outline: none;
+}
+
+.nominal-lainya {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.nominal-lainya p {
+  margin: 0;
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.nominal-lainya .form-control {
+  width: 100%;
+}
+
+.button-pembayaran {
+  display: block;
+  width: 100%;
+  background-color: #f8b22d;
+  border: none;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.button-pembayaran:hover {
+  background-color: #f7f3e8;
+  color: #f8b22d;
+}
+
+.mdb-switch .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #f7f3e8 !important;
+  border-color: #f7f3e8 !important;
+}
+
+.mdb-switch .custom-control-input ~ .custom-control-label::before {
+  background-color: #f7f3e8 !important;
+  border-color: #f7f3e8 !important;
+}
+
+.mdb-switch .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #f7f3e8 !important;
+}
+
+.mdb-switch .custom-control-input ~ .custom-control-label::after {
+  background-color: #f7f3e8 !important;
+}
+
+/* payment donasi barang */
+.title-donasiBarang {
+  text-align: left;
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 10px;
+}
+
+.title-donasiBarang h2{
+  text-align: left;
+  padding-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.custom-h4 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.custom-h3 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container-donasiBarang {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.container-donasiBarang-left,
+.container-donasiBarang-right {
+  background-color: white;
+  border-radius: 15px;
+  width: 48%;
+  padding: 35px;
+}
+
+.container-donasiBarang-left {
+  width: 55%;
+  height: 100%;
+}
+
+.container-donasiBarang-right {
+  background-color: white;
+  border-radius: 15px;
+  width: 42%;
+  padding: 35px;
+}
+
+.title-form h3,
+.title-Pembayaran h3 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+.form-donasiBarang .form-group-donasiBarang {
+  margin-bottom: 20px;
+}
+
+.button-donasi {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17), 1px 0px 3px rgba(0, 0, 0, 0.17);
+  outline: none;
+}
+
+.button-donasi:hover {
+  background-color: #f8b22d;
+}
+
+.button-donasi:focus,
+.button-donasi:active {
+  background-color: #f8b22d;
+  border: none; 
+  box-shadow: none; 
+  outline: none;
+}

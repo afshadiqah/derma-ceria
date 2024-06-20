@@ -1,0 +1,27 @@
+.customModal {
+  max-width: 600px;
+}
+
+.shareModalBody {
+  text-align: center;
+}
+
+.shareButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ShareSocialMedia.module.css */
+.shareButton {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 35px; /* Ukuran ikon yang diinginkan */
+  height: auto;
+
+}

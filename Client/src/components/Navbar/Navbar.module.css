@@ -1,0 +1,84 @@
+.navbar {
+  background-color: var(--black-color);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+}
+
+.col {
+  padding: 0;
+}
+
+/* button login */
+.btnLogin a {
+  border-radius: 30px;
+  width: 110px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+/* Media query untuk tampilan responsif */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-brand,
+  .form-control,
+  .navLink {
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-control {
+    margin-bottom: 10px;
+  }
+
+  .btnLogin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.btnLogin {
+  margin-left: 25px; 
+
+}
+
+.navLink {
+  display: inline-block;
+  width: 100px; 
+  color: white !important;
+  margin-left: 20px;
+  transition: color 0.1s ease, background-color 0.1s ease;
+  border-radius: 15px;
+  padding: 5px 10px;
+  text-align: center; 
+}
+
+.navLink:active {
+  color: black !important; 
+  background-color: #f8b22d !important;
+}

@@ -1,0 +1,54 @@
+.containerWrapper {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+}
+
+.mainTitle {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.subTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.input-container {
+  position: relative;
+  width: 100%; /* Changed width to 100% to occupy full width of its container */
+  max-width: 467px; /* Added max-width to maintain responsiveness */
+  margin-left: auto; /* Centering the input container */
+  margin-right: auto; /* Centering the input container */
+}
+
+.input-container img {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 20px;
+}
+
+.input-container input {
+  width: calc(100% - 40px); /* Adjusted input width to occupy remaining space */
+  padding-left: 40px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  width: 28.5rem;
+  height: 38px;
+  box-shadow: none;
+}
+
+
+.rowMargin {
+  margin-bottom: 5rem;
+}
+
+.addButton {
+  width: auto;
+  margin-bottom: 10px;
+}

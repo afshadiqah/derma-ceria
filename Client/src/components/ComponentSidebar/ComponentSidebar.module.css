@@ -1,0 +1,35 @@
+.sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #231f20; /* Warna latar belakang gelap */
+  padding: 20px 10px;
+}
+
+.sidebarLogo {
+  width: 80%; /* Sesuaikan lebar sesuai kebutuhan */
+  margin-bottom: 50px; /* Tambahkan margin bawah untuk memberi jarak */
+}
+
+.navLink {
+  color: #ffffff; /* Warna teks putih */
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.navLinkProfile {
+  color: #ffffff; /* Warna teks putih */
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-top: 100px;
+}
+
+.navItem {
+  margin-bottom: 15px; /* Tambahkan margin bawah untuk jarak antar elemen */
+}
+
+.activeNavLink {
+  color: #f8b22d !important; /* Warna teks kuning untuk tautan aktif */
+}

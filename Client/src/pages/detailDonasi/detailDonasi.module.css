@@ -1,0 +1,23 @@
+.body-donasi{
+    background-color: var(--secondary-color);
+    font-family: Helvetica, sans-serif;  
+}
+
+.blog-pic {
+    object-fit: cover;
+    width: 100%;
+    max-width: 100%; 
+    height: auto; 
+    object-position: top;
+    display: block; 
+}
+
+.title-detail{
+    margin-top: 20px;
+    font-weight: 600px;
+}
+
+.pilihandonasi{
+    font-weight: bold;
+    margin-top: 20px;
+}

@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #f8b22d;
+  --secondary-color: #f7f3e8;
+  --black-color: #231f20;
+  --white-color: white;
+}
+
+.container {
+  background-color: var(--black-color);
+}
+
+/* Common styles for all columns */
+.col {
+  padding: 0 15px;
+}
+
+/* Specific styles for each column */
+.colLogo {
+  flex: 1;
+}
+
+.colContact {
+  flex: 1;
+}
+
+.colAddress {
+  flex: 1;
+}
+
+/* Adjustments for icons and links */
+.footerRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footerIcon {
+  max-width: 20px;
+}
+
+.footerLink {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}

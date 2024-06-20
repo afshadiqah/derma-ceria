@@ -1,0 +1,14 @@
+:root {
+  --primary-color: #f8b22d;
+  --secondary-color: #f7f3e8;
+  --black-color: #231f20;
+  --white-color: white;
+}
+
+.body {
+  background-color: var(--secondary-color);
+  font-family: Helvetica, sans-serif;
+  /* font-family: "Times New Roman", Times, serif; */
+}
+
+

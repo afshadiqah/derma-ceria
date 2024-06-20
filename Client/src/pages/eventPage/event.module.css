@@ -1,0 +1,24 @@
+.body-event {
+  background-color: var(--secondary-color);
+  font-family: Helvetica, sans-serif;
+}
+
+.DescriptionContainer p {
+  width:37rem;
+  padding-right: -13px;
+  margin-top: auto;
+  margin-right: -5rem;
+  margin-left: 2rem; 
+}
+
+.DescriptionContainer h4 {
+  padding-right: -9px;
+  margin-top: -10rem;
+  margin-left: 2rem; 
+}
+
+.Containerdetail {
+  margin-left: auto;
+  margin-right: 0;
+  padding-left: 2rem; 
+}

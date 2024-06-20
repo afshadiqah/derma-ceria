@@ -1,0 +1,143 @@
+.bodyCardBerdonasi {
+  font-family: Helvetica;
+  font-style: normal;
+  margin-top: 47px;
+  margin-bottom: -30px;
+}
+
+.titleCard,
+.Danaterkumpul,
+.titleProfile {
+  font-weight: bold;
+}
+
+.Danaterkumpul {
+  font-size: 25px;
+  margin: 5px 0 15px 0;
+}
+
+.amount {
+  color: grey;
+  font-size: 12px;
+  margin: 5px 0 15px 0;
+}
+
+.textCard {
+  color: grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Menambahkan ruang di antara elemen */
+.textCard > * {
+  text-align: center;
+  margin-right: 35px;
+  margin-left: 35px; /* Atur ruang di antara elemen */
+}
+
+.btnbuttonDonasi {
+  width: 100%;
+}
+
+.btnbuttonShare {
+  width: 100%;
+  color: black;
+  margin-top: 10px;
+}
+
+.iconBoxcoin {
+  width: 15px;
+  height: 15px;
+  margin-top: -3px;
+  margin-left: 5px;
+}
+
+.iconShare {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+
+.customRow {
+  display: grid;
+  margin-top: 3rem;
+  width: 99%;
+}
+
+.cardStyle {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: -30px;
+  justify-content: center;
+}
+
+.hrStyle {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.linkStyle {
+  color: grey;
+  text-align: center;
+  height: auto;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.titleProfile{
+    margin-top: 10px;
+}
+
+.imageCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: right;
+}
+
+/* DonationCardProfile.module.css */
+.donationCardProfile {
+    display: flex;
+    align-items: center;
+    margin : 10px;/* Ukuran font keseluruhan kecil */
+  }
+  
+  .imageCard {
+    margin-right: 15px; /* Sesuaikan jarak antara gambar dan teks */
+    max-width: 50px; /* Ukuran gambar kecil */
+  }
+  
+  .textContainer {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .jumlahUang {
+    font-weight: bold;
+    margin-bottom: 0; /* Menghilangkan margin bawah */
+    font-size: 15px; /* Ukuran font kecil */
+  }
+  
+  .namaPenerima {
+    font-weight: normal;
+    margin-top: 5px; /* Menambahkan jarak atas antara jumlah uang dan nama penerima */
+    font-size: 10px; 
+    color: grey;
+    font-style: italic;/* Ukuran font kecil */
+  }
+  
+  .textWaktu {
+    margin-left: auto; /* Sesuaikan jarak antara waktu dan teks lain */
+  }
+  
+  .waktu {
+    font-size: 10px; /* Ukuran font waktu kecil */
+    color: grey;
+    font-style: italic;
+  }
+  
