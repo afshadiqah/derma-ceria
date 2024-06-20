@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import styles from "../CardEvent/CardEvent.module.css";
 
-const CardEvent = ({ imageSrc, label, title, LinkButton }) => {
+const CardEvent = ({ imageSrc, title, startDate, LinkButton }) => {
   return (
     <div>
       <Card className={styles.CardEvent}>
@@ -17,7 +17,7 @@ const CardEvent = ({ imageSrc, label, title, LinkButton }) => {
           </div>
           <div>
           <div className={styles.labelCard}>
-            <Card.Text>{label}</Card.Text>
+            <Card.Text>Dimulai sejak {new Intl.DateTimeFormat('id-ID', { month: 'long', day: '2-digit', year: 'numeric' }).format(new Date(startDate))}</Card.Text>
           </div>
               <Link to={LinkButton} className={`btn btn-warning ${styles.btnSelengkapnya}`}>
                 Lihat Selengkapnya

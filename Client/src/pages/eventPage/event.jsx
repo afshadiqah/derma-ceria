@@ -10,44 +10,38 @@ import CardEvent3 from "../../assets/images/event1.jpg";
 import CardEvent2 from "../../assets/images/event2.png";
 import CardEvent1 from "../../assets/images/event3.jpg";
 
-const Event = () => {
-  return (
-    <div className={styles["body-event"]}>
-      <div className={styles["landing-donasi-page"]}>
-        <LandingPageComponent />
-      </div>
+import useAxios from "axios";
+import useSwr from "swr";
 
-      <div className={styles.eventCard}>
-        <Container>
-          <Row className="gap-6 max-md:flex-col max-md:gap-0">
-            <Col>
-              <CardEvent
-                imageSrc={CardEvent1}
-                label="Dimulai sejak 18 April 2024"
-                title="Charity Children Camp SARENITY"
-                LinkButton="/eventdetail"
-              />
-            </Col>
-            <Col>
-              <CardEvent
-                imageSrc={CardEvent2}
-                label="Dimulai sejak 18 April 2024"
-                title="Charity Together With Diesnatalis Fasilkom"
-                LinkButton="/eventdetail"
-              />
-            </Col>
-            <Col>
-              <CardEvent
-                imageSrc={CardEvent3}
-                label="Dimulai sejak 18 April 2024"
-                title="Sport Event: Uniting Communities!"
-                LinkButton="/eventdetail"
-              />
-            </Col>
-          </Row>
-        </Container>
+const Event = () => {
+  //Sambung BE
+  const fetcher = (url) => useAxios.get(url).then((res) => res.data);
+  const { data, error, isLoading } = useSwr("http://localhost:5000/event", fetcher);
+  console.log(data);
+  if (isLoading) {
+    return <div>Please Wait...</div>;
+  }
+
+  return (
+    <>
+      <div className={styles["body-event"]}>
+        <div className={styles["landing-donasi-page"]}>
+          <LandingPageComponent />
+        </div>
+
+        <div className={styles.eventCard}>
+          <Container>
+            <Row className="gap-6 max-md:flex-col max-md:gap-0">
+              {data?.map((event) => (
+                <Col key={event.id_event}>
+                  <CardEvent title={event.event_title} imageSrc={event.event_pic} startDate={event.start_date} LinkButton={`/eventdetail/${event.id_event}`} />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
