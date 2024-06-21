@@ -10,7 +10,17 @@ import CardBlog3 from "../../assets/images/blog1.jpg";
 import CardBlog2 from "../../assets/images/blog2.jpg";
 import CardBlog1 from "../../assets/images/blog3.jpg";
 
+import useAxios from "axios";
+import useSwr from "swr";
+
 const Blog = () => {
+  //Sambung BE
+  const fetcher = (url) => useAxios.get(url).then((res) => res.data);
+  const { data, error, isLoading } = useSwr("http://localhost:5000/blog", fetcher);
+  console.log(data);
+  if (isLoading) {
+    return <div>Please Wait...</div>;
+  }
   return (
     <div className={styles["body-blog"]}>
       <div className={styles["landing-donasi-page"]}>
@@ -20,30 +30,16 @@ const Blog = () => {
       <div className={styles.BlogCard}>
         <Container>
           <Row className="gap-6 max-md:flex-col max-md:gap-0">
-            <Col>
+          {data?.map((blog) => (
+            <Col key={blog.id_blog}>
               <CardBlog
-                imageSrc={CardBlog1}
-                label="DermaCeria | 08 Maret 2024"
-                text="Tidak hanya dengan berdonasi dalam berbentuk uang,tetapi bersama Dermaceria dapat berdonasi dengan berupa donasi barang secara sukarela dan DermaCeria sudah terbukti terpercaya"
-                LinkButton="/blogdetail"
+                imageSrc={blog.blog_pic}
+                startDate={blog.start_date}
+                text={blog.blog_desc}
+                LinkButton={`/blogdetail/${blog.id_blog}`}
               />
             </Col>
-            <Col>
-              <CardBlog
-                imageSrc={CardBlog2}
-                label="DermaCeria | 08 Maret 2024"
-                text="Tips agar dapat berdonasi secara rutin maka luangkan waktumu dengan mempedulikan masyarakat yang membutuhkan dan kiranya tanamkan bahwa pentingnya berdonatur secara rutin."
-                LinkButton="/blogdetail"
-              />
-            </Col>
-            <Col>
-              <CardBlog
-                imageSrc={CardBlog3}
-                label="DermaCeria | 08 Maret 2024"
-                text="Bersama dengan DermaCeria membantu adik yang kurang mampu dalam perekonomian dengan tubuh yang sedang sakit dan membutuhkan uluran tangan sedikit donasi anda berarti untuk membantu pengobatan"
-                LinkButton="/blogdetail"
-              />
-            </Col>
+            ))}
           </Row>
         </Container>
       </div>
