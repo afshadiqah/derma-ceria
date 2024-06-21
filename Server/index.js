@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import db from "./db.js";
 import userRoutes from "./routes/user.js";
 import eventRoutes from "./routes/event.js";
+import eventdetailRoutes from "./routes/eventdetail.js";
 import pembayaranRoutes from "./routes/metode_pembarayan.js";
 import riwayatRoutes from "./routes/riwayat_donasi.js";
 import donasiBarangRoutes from "./routes/donasi_barang.js";
@@ -35,6 +36,7 @@ App.get("/", (req, res) => {
 // tambahin disini gaes + tambahin file js di folder routes
 App.use("/users", userRoutes);
 App.use("/event", eventRoutes);
+App.use("/eventdetail", eventdetailRoutes);
 App.use("/metode_pembayaran", pembayaranRoutes);
 App.use("/riwayat_donasi", riwayatRoutes);
 

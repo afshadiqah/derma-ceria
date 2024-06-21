@@ -1,14 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 import styles from "./event.module.css";
 import CardEvent from "../../components/CardEvent/CardEvent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
-
-import CardEvent3 from "../../assets/images/event1.jpg";
-import CardEvent2 from "../../assets/images/event2.png";
-import CardEvent1 from "../../assets/images/event3.jpg";
 
 import useAxios from "axios";
 import useSwr from "swr";
