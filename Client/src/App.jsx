@@ -98,7 +98,7 @@ function App() {
         <Route path="/event" element={<Event />} />
         <Route path="/eventdetail" element={<EventDetail />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blogdetail" element={<BlogDetail />} />
+        <Route path="/blogdetail/:id" element={<BlogDetail />} />
         <Route path="/login" element={<LoginWithoutFooter />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pendidikan" element={<Pendidikan />} />

@@ -15,7 +15,9 @@
   }
   
   .title {
+    font-size: 30px;
     font-weight: bold;
+    margin: 30px 0 15px 0;
   }
   
   .date-category {
@@ -31,4 +33,6 @@
   .blog-content {
     margin-bottom: 0;
   }
+
+  
   

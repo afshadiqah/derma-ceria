@@ -36,7 +36,7 @@ const Blog = () => {
                 imageSrc={blog.blog_pic}
                 startDate={blog.start_date}
                 text={blog.blog_desc}
-                LinkButton={`/blogdetail/${blog.id_blog}`}
+                linkButton={`/blogdetail/${blog.id_blog}`}
               />
             </Col>
             ))}

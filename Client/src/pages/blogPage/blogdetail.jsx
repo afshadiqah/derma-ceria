@@ -3,8 +3,30 @@ import { Col, Row } from "react-bootstrap";
 import styles from "./blog.module.css";
 import Blogdetail from "../../assets/images/blogdetail.jpg";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
+import axios from "axios";
+import useSwr from "swr";
 
-const blogdetail = () => {
+const BlogDetail = () => {
+  // Fungsi untuk mengambil data dari backend
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const { data, error, isLoading } = useSwr("http://localhost:5000/blogdetail", fetcher);
+
+  if (isLoading) {
+    return <div>Please Wait...</div>;
+  }
+
+  if (error) {
+    return <div>Failed to load</div>;
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date)) {
+      return "Invalid date";
+    }
+    return new Intl.DateTimeFormat("id-ID", { day: "2-digit", month: "long", year: "numeric" }).format(date);
+  };
+
   return (
     <div className="bg-white">
       <div className="detail-event-landing" style={{ position: "relative", minHeight: "100vh" }}>
@@ -12,23 +34,30 @@ const blogdetail = () => {
         <LandingPageComponent />
       </div>
       <div className={styles["content-container"]}>
-        <Row>
-          <h2 className={styles["title"]}>5 Tujuan Donasi dan Manfaatnya</h2>
-          <p className={styles["date-category"]}>DermaCeria | Donasi | 12 FEBRUARI 2024</p>
-          <Col md={6}>
-            <img src={Blogdetail} alt="blog-pic" className={styles["blog-pic"]} />
-          </Col>
-          <Col md={6}>
-            <p className={`${styles["blog-content"]} mb-5`}>
-              Donasi adalah tindakan pemberian sukarela yang bertujuan untuk membantu individu, kelompok, atau lembaga yang membutuhkan. Tindakan ini merupakan wujud nyata kepedulian sosial dan empati terhadap sesama. Donasi memiliki tujuan
-              yang bervariasi dan manfaatnya pun melibatkan banyak aspek. Tujuannya adalah membantu mereka yang membutuhkan, mendukung Penelitian dan pengembangan, Kemanusian Ditengah Bencana, Mendukung pengembangan Komunitas, Melindungi
-              Lingkungan dan manfaatnya adalah Meringankan penderitaan, Mendorong perubahan sosial, Menginspirasi tindakan Lain, Menghubungkan manusia dan Membangun kepuasan batin.
-             </p>
-          </Col>
-        </Row>
+        {data && data.map((blog) => (
+          <Row key={blog.id_blog}>
+            <h2 className={styles["title"]}>{blog.blog_title}</h2>
+            <p className={styles["date-category"]}>
+            DermaCeria | Derma Ceria |{" "}
+            {new Intl.DateTimeFormat("id-ID", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            }).format(new Date(blog.start_date))}
+            </p>
+            <Col md={6}>
+              <img src={blog.blog_pic || Blogdetail} alt="blog-pic" className={styles["blog-pic"]} />
+            </Col>
+            <Col md={6}>
+              <p className={`${styles["blog-content"]} mb-5`}>
+                {blog.blog_text}
+              </p>
+            </Col>
+          </Row>
+        ))}
       </div>
     </div>
   );
 };
 
-export default blogdetail;
+export default BlogDetail;
