@@ -84,7 +84,7 @@
   height: 10px;
   border-radius: 50%;
   background-color: #f8b22d;
-  margin-right: 1rem;
+  margin: 0 1rem 0 1px;
   position: relative;
   z-index: 1;
 }
