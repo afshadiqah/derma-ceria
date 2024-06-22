@@ -42,15 +42,11 @@ const BlogDetail = () => {
 
   return (
     <div className="bg-white">
-      <div className="detail-blog-landing" style={{ position: "relative", minHeight: "100vh" }}>
-        {/* Landing Page Component */}
-        <LandingPageComponent />
-      </div>
       <div className={styles["content-container"]}>
         <Row key={blog.id_blog}>
           <h2 className={styles["title"]}>{blog.blog_title}</h2>
           <p className={styles["date-category"]}>
-            DermaCeria | Derma Ceria | {formattedDate}
+            DermaCeria | {formattedDate}
           </p>
           <Col md={6}>
             <img src={blog.blog_pic || Blogdetail} alt="blog-pic" className={styles["blog-pic"]} />
