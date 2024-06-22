@@ -1,5 +1,6 @@
-.body-donasi{
+.donasi-card-img{
     background-color: var(--secondary-color);
     font-family: Helvetica, sans-serif;
-  
+    padding: 60px;
+    margin: -65px 0 0 0;
 }
