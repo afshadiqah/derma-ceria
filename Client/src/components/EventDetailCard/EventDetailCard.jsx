@@ -5,16 +5,16 @@ import styles from "./EventDetailCard.module.css";
 const EventDetailCard = ({ eventName, date, time, location, benefit, imageSrc }) => {
   return (
     <Col md={5}>
-      <Container className={`${styles.container}`}>
+      <Container className={styles.container}>
         <Row>
           <Col>
             <div className={styles.eventInfo}>
-              <p>
+              {/* <p>
                 <strong>Nama Event</strong>
                 <span>: {eventName}</span>
-              </p>
+              </p> */}
               <p>
-                <strong>Hari/Tanggal</strong>
+                <strong>Tanggal</strong>
                 <span>: {date}</span>
               </p>
               <p>

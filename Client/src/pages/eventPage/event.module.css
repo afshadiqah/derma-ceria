@@ -3,22 +3,38 @@
   font-family: Helvetica, sans-serif;
 }
 
-.DescriptionContainer p {
-  width:34rem;
-  padding-right: -13px;
-  margin-top: auto;
-  margin-right: -5rem;
-  margin-left: 2rem; 
+.descriptionContainer {
+  margin: 2rem 2rem 5rem 2rem;
+  padding-right: 1rem;
 }
 
-.DescriptionContainer h4 {
-  padding-right: -9px;
-  margin-top: -10rem;
-  margin-left: 2rem; 
+.descriptionContainer h4 {
+  margin-bottom: 2rem;
+  font-weight: 650;
+  font-size: 34px;
 }
 
-.Containerdetail {
-  margin-left: auto;
-  margin-right: 0;
-  padding-left: 2rem; 
+.descriptionContainer p {
+  font-size: 18px;
+}
+
+.containerDetail {
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.detail-event-landing {
+  position: relative;
+  min-height: 100vh;
+}
+
+.detail_event {
+  margin-top: 5rem;
+}
+
+.eventImage {
+  height: 400px; /* Adjust the height as needed */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
 }

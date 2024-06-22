@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
+import EventImageComponent from "../../components/EventImageBanner/EventImageBanner";
 import EventDetailCard from "../../components/EventDetailCard/EventDetailCard";
 import styles from "./event.module.css";
 import axios from "axios";
@@ -32,19 +32,17 @@ const EventDetail = () => {
 
   return (
     <div className="bg-white">
-      <div className="detail-event-landing" style={{ position: "relative", minHeight: "100vh" }}>
-        {/* Komponen Landing Page */}
-        <LandingPageComponent />
-      </div>
+      <EventImageComponent imageUrl={eventDetail.event_pic} />
 
-      <div className={styles.Containerdetail}>
+      <div className={styles.containerDetail}>
         <Row>
-          <Col md={6} className={`DescriptionContainer ${styles["DescriptionContainer"]}`}>
-            <h4>Deskripsi</h4>
+          <Col className={`descriptionContainer ${styles.descriptionContainer}`}>
+            <h4>{eventDetail.event_title}</h4>
+            
             <p>{eventDetail.event_desc}</p>
           </Col>
-          <Col md={4}>
-            <EventDetailCard className={styles["Containerdetail"]} eventName={eventDetail.event_title} date={eventDate} time={eventTime} location={eventDetail.location} benefit={eventDetail.benefit} imageSrc={eventDetail.benefit_pic} />
+          <Col className={styles.detail_event}>
+            <EventDetailCard date={eventDate} time={eventTime} location={eventDetail.location} benefit={eventDetail.benefit} imageSrc={eventDetail.benefit_pic} />
           </Col>
         </Row>
       </div>

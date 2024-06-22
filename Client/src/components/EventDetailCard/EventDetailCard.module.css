@@ -1,33 +1,38 @@
 .container {
-    margin-top: -10rem;
-    margin-bottom: 50px;
-    max-height: 330px;
-    width: 35em;
-    background-color: #f7f3e8;
-    padding: 3rem;
-    border-radius: 0.25rem;
-    /* margin-left: auto; */
-    margin-right:10rem;
-  }
-  
-  .cardImg {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
-  .eventInfo {
-    font-size: 15px;
-  }
-  
-  .eventInfo p {
-    margin-bottom: 0.5rem;
-  }
-  
-  .eventInfo strong {
-    font-weight: bold;
-  }
-  
-  .eventInfo span {
-    margin-left: 12px;
-  }
-  
+  margin-top: 2rem;
+  max-height: 330px;
+  width: 35em;
+  background-color: #f7f3e8;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardImg {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.cardImg img {
+  width: 15rem;
+  height: 15rem;
+}
+
+.eventInfo {
+  font-size: 15px;
+}
+
+.eventInfo p {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.eventInfo strong {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.eventInfo span {
+  flex: 1;
+}
