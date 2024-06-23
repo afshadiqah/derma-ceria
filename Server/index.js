@@ -17,6 +17,7 @@ import blogRoutes from "./routes/blog.js";
 import blogdetailRoutes from "./routes/blogdetail.js";
 import dashboard_donaturRoutes from "./routes/dashboard_donatur.js";
 import kampanyeRoutes from "./routes/kampanye.js";
+import kampanyedetailRoutes from "./routes/kampanyedetail.js";
 import brandpeduliRoutes from "./routes/brandpeduli.js";
 
 const App = express();
@@ -50,6 +51,7 @@ App.use("/blog", blogRoutes);
 App.use("/blogdetail", blogdetailRoutes);
 App.use("/dashboard_donatur", dashboard_donaturRoutes);
 App.use("/kampanye", kampanyeRoutes);
+App.use("/kampanyedetail", kampanyedetailRoutes);
 App.use("/brandpeduli", brandpeduliRoutes);
 
 App.get("/hello", (req, res) => {

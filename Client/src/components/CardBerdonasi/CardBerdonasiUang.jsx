@@ -8,36 +8,38 @@ import styles from "./CardBerdonasi.module.css";
 import ProfileComponent from "../../components/ProfileComponent";
 import ShareSocialMedia from "../../components/ShareSocialMedia/ShareSocialMedia"; // Import komponen ShareSocialMedia
 
-const CardBerdonasiUang = ({ 
-  title, 
-  danaterkumpul, 
-  progress, 
-  target, 
-  donasi, 
-  dibagikan, 
-  hari, 
-  buttonDonasi, 
-  buttonShare, 
-  rincianpenggunaandana, 
-  imageProfile, 
-  titleProfile, 
-  jumlahUang, 
-  namaPenerima, 
-  waktu, 
-  semuadonasi, 
-  imageProfile2, 
-  titleProfile2, 
-  jumlahUang2, 
-  namaPenerima2, 
-  waktu2, 
-  semuadonasi2, 
-  imageProfile3, 
-  titleProfile3, 
-  jumlahUang3, 
-  namaPenerima3, 
-  waktu3, 
-  semuadonasi3 
+const CardBerdonasiUang = ({
+  title,
+  target,
+  terkumpul,
+  buttonDonasi,
+  imageProfile,
+  titleProfile,
+  jumlahUang,
+  namaPenerima,
+  waktu,
+  buttonShare,
+  danaterkumpul,
+  donasi,
+  dibagikan,
+  hari,
+  rincianpenggunaandana,
+  imageProfile2,
+  titleProfile2,
+  jumlahUang2,
+  namaPenerima2,
+  waktu2,
+  imageProfile3,
+  titleProfile3,
+  jumlahUang3,
+  namaPenerima3,
+  waktu3,
+  semuadonasi,
+  semuadonasi2,
+  semuadonasi3,
 }) => {
+  const progress = target !== 0 ? (terkumpul / target) * 100 : 0;
+
   const [showShareModal, setShowShareModal] = useState(false); // State untuk modal
 
   const handleShareClick = () => {
@@ -48,7 +50,20 @@ const CardBerdonasiUang = ({
     setShowShareModal(false); // Tutup modal
   };
 
+  // Fungsi untuk menambahkan pemisah ribuan dan memformat angka sesuai kebutuhan
+  const formatNumber = (number) => {
+    // Mengecek apakah angka lebih dari atau sama dengan 1000
+    if (number >= 1000) {
+      // Memisahkan ribuan dengan titik
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    } else {
+      // Memisahkan ratusan dengan koma
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  };
+
   return (
+    <div className="w-100"> 
     <div className={styles.bodyCardBerdonasi}>
       <Card className={styles.CardBerdonasi}>
         <Card.Header>
@@ -58,13 +73,15 @@ const CardBerdonasiUang = ({
         </Card.Header>
         <Card.Body>
           <div className={styles.Danaterkumpul}>
-            <Card.Text>{danaterkumpul}</Card.Text>
+            <Card.Text>Rp {formatNumber(terkumpul)}</Card.Text>
           </div>
           <div className={styles.progressBar}>
             <ProgressBar animated now={progress} variant="warning" style={{ width: "100%", height: "10px" }} />
           </div>
           <div className={styles.amount}>
-            <Card.Text>dari Target =&gt; Rp. {target}</Card.Text>
+            <Card.Text>
+              <strong> {formatNumber(terkumpul)} </strong> terkumpul dari Rp {formatNumber(target)}
+            </Card.Text>
           </div>
           <div className={styles.textCard}>
             <Card.Text>
@@ -154,12 +171,13 @@ const CardBerdonasiUang = ({
           </div>
         </Card.Body>
       </Card>
-      <ShareSocialMedia 
-        showShareModal={showShareModal} 
-        handleCloseShareModal={handleCloseShareModal} 
-        shareUrl={window.location.href} 
-        shareText={`Lihat bukti pembayaran saya di ${window.location.href}`} 
+      <ShareSocialMedia
+        showShareModal={showShareModal}
+        handleCloseShareModal={handleCloseShareModal}
+        shareUrl={window.location.href}
+        shareText={`Lihat bukti pembayaran saya di ${window.location.href}`}
       />
+    </div>
     </div>
   );
 };

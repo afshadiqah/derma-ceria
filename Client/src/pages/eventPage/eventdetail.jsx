@@ -42,7 +42,12 @@ const EventDetail = () => {
             <p>{eventDetail.event_desc}</p>
           </Col>
           <Col className={styles.detail_event}>
-            <EventDetailCard date={eventDate} time={eventTime} location={eventDetail.location} benefit={eventDetail.benefit} imageSrc={eventDetail.benefit_pic} />
+            <EventDetailCard 
+            date={eventDate} 
+            time={eventTime} 
+            location={eventDetail.location} 
+            benefit={eventDetail.benefit} 
+            imageSrc={eventDetail.benefit_pic} />
           </Col>
         </Row>
       </div>

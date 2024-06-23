@@ -36,6 +36,8 @@ import Terbaru from "./pages/diurutkan/terbaru";
 import Terlama from "./pages/diurutkan/terlama";
 import Mendesak from "./pages/diurutkan/mendesak";
 
+import Kampanyedetail from "./pages/detailDonasi/kampanyedetail";
+
 import DetailPendidikan from "./pages/detailDonasi/detailPendidikan";
 import DetailBencana from "./pages/detailDonasi/detailBencana";
 import DetailKesehatan from "./pages/detailDonasi/detailKesehatan";
@@ -116,6 +118,7 @@ function App() {
         <Route path="/terbaru" element={<Terbaru />} />
         <Route path="/terlama" element={<Terlama />} />
         <Route path="/mendesak" element={<Mendesak />} />
+        <Route path="/kampanyedetail/:id" element={<Kampanyedetail />} />
         <Route path="/detailpendidikan" element={<DetailPendidikan />} />
         <Route path="/detailbencana" element={<DetailBencana />} />
         <Route path="/detailkesehatan" element={<DetailKesehatan />} />
