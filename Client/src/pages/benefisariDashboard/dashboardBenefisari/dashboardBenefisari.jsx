@@ -12,7 +12,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 const dashboardBenefisari = () => {
   const { data, error } = useSWR("http://localhost:5000/kampanye", fetcher);
 
-  const headers = ["No", "Campaign", "Donasi/Target", "Status"];
+  const headers = ["No", "Campaign", "Terkumpul","Target", "Status"];
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -38,6 +38,7 @@ const dashboardBenefisari = () => {
       >
         <td style={{ textAlign: "center" }}>{index + 1}</td>
         <td>{kampanye.kampanye_title}</td>
+        <td style={{ textAlign: "left" }}>{`Rp. ${kampanye.terkumpul}`}</td>
         <td style={{ textAlign: "left" }}>{`Rp. ${kampanye.target}`}</td>
         <td style={{ textAlign: "center" }}>
           {new Date(kampanye.end_date) > new Date() ? "Berlangsung" : "Selesai"}
