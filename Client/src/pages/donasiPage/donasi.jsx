@@ -40,7 +40,8 @@ const Donasi = () => {
             <FilterComponent />
             <Col>
               <Row className={`gap-6 ${styles["card-container"]}`}>
-              {data?.map((kampanye) => (
+              {currentItems &&
+                  currentItems.map((kampanye) => (
                     <Col key={kampanye.id_kampanye} xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
                       <CardFilter
                         imageSrc={kampanye.kampanye_pic_cover}
