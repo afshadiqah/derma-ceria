@@ -1,21 +1,24 @@
 import React from "react";
-import { Container, Row, Col, Card, Nav } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import useSWR from "swr";
+import axios from "axios";
 import Search from "../../../assets/icons/search.svg"; // Update the import path
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./dashboardBenefisari.module.css";
 
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 const dashboardBenefisari = () => {
+  const { data, error } = useSWR("http://localhost:5000/kampanye", fetcher);
+
   const headers = ["No", "Campaign", "Donasi/Target", "Status"];
 
-  const data = [
-    ["1", "Donasi bantuan untuk anak Indonesia", "Rp. 20.000.000", "Berlangsung"],
-    ["2", "Donasi darurat pasien ICU", "Rp. 20.000.000", "Berlangsung"],
-    ["3", "Donasi korban gempa bumi", "Rp. 20.000.000", "Berlangsung"],
-    ["4", "Donasi paket takjil", "Rp. 10.000.000", "Selesai"],
-    ["5", "Donasi untuk Palestina", "Rp. 30.000.000", "Berlangsung"],
-    ["6", "Donasi korban banjir", "Rp. 20.000.000", "Selelasai"],
-  ];
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
+  // Filter the data based on id_user = 1
+  const filteredData = data.filter((kampanye) => kampanye.id_user === 1);
 
   const renderTableHeader = () => {
     return headers.map((header, index) => (
@@ -26,16 +29,20 @@ const dashboardBenefisari = () => {
   };
 
   const renderTableBody = () => {
-    return data.map((rowData, rowIndex) => (
+    return filteredData.map((kampanye, index) => (
       <tr
-          key={rowIndex}
-          style={{ backgroundColor: rowIndex % 2 === 1 ? '#ffcc99' : 'transparent' }} // Warna oranye muda untuk baris ganjil
-        >
-          {rowData.map((cellData, cellIndex) => (
-            <td key={cellIndex}>{cellData}</td>
-          ))}
-        </tr>
-      
+        key={kampanye.id_kampanye}
+        style={{
+          backgroundColor: index % 2 === 1 ? "#ffcc99" : "transparent",
+        }} // Warna oranye muda untuk baris ganjil
+      >
+        <td style={{ textAlign: "center" }}>{index + 1}</td>
+        <td>{kampanye.kampanye_title}</td>
+        <td style={{ textAlign: "left" }}>{`Rp. ${kampanye.target}`}</td>
+        <td style={{ textAlign: "center" }}>
+          {new Date(kampanye.end_date) > new Date() ? "Berlangsung" : "Selesai"}
+        </td>
+      </tr>
     ));
   };
 
@@ -75,7 +82,7 @@ const dashboardBenefisari = () => {
           </Col>
           <Col>
             <div className={styles["input-container"]}>
-            <img src={Search} alt="search" />
+              <img src={Search} alt="search" />
               <input type="text" placeholder="Search" className={`form-control mx-2 bg-light ${styles.searchInput}`} />
             </div>
           </Col>
