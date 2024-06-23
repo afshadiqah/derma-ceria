@@ -4,3 +4,11 @@
     padding: 60px;
     margin: -65px 0 0 0;
 }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin-left: 2rem;
+  /* height: 80rem */
+}

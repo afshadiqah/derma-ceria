@@ -1,0 +1,23 @@
+.pagination {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.pagination :global(.page-item.active .page-link) {
+  background-color: orange !important;
+  border-color: rgba(255, 166, 0, 0) !important;
+}
+
+.pagination :global(.page-link) {
+  color: rgb(0, 0, 0) !important;
+}
+
+.pagination :global(.page-link:hover) {
+  background-color: #ffcc80 !important;
+  border-color: rgba(255, 166, 0, 0) !important;
+}
+
+.card-container {
+  min-height: 400px; /* Adjust this value as needed */
+}
