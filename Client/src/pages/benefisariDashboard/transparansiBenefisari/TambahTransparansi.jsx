@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
+import axios from 'axios';
 
 const TambahTransparansi = ({ showModal, handleClose }) => {
   const [judul, setJudul] = useState("");
-  const [testimoni, setTestimoni] = useState(""); // Changed state variable name
+  const [testimoni, setTestimoni] = useState("");
   const [fotoTransparansi, setFotoTransparansi] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", judul, testimoni, fotoTransparansi);
-    handleClose();
+    const formData = new FormData();
+    formData.append('anggaran_program', judul);
+    formData.append('testimoni', testimoni);
+    formData.append('dokumentasi', fotoTransparansi);
+
+    try {
+      await axios.post('http://localhost:5000/transparansi_benefesiari', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      handleClose();
+    } catch (error) {
+      console.error('There was an error uploading the data!', error);
+    }
   };
 
   return (
@@ -36,7 +49,7 @@ const TambahTransparansi = ({ showModal, handleClose }) => {
               type="text"
               placeholder="Masukkan testimoni"
               value={testimoni}
-              onChange={(e) => setTestimoni(e.target.value)} // Fixed onChange function
+              onChange={(e) => setTestimoni(e.target.value)}
               required
             />
           </Form.Group>

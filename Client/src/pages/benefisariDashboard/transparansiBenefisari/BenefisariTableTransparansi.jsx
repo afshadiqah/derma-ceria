@@ -19,6 +19,10 @@ const styles = {
   actionButton: {
     marginRight: '5px',
   },
+  image: {
+    width: '100px', // Set the width of the image
+    height: 'auto', // Set the height to auto to maintain aspect ratio
+  },
 };
 
 const BenefisariTableTransparansi = ({ data, handleEditItem, handleDeleteItem }) => {
@@ -36,10 +40,12 @@ const BenefisariTableTransparansi = ({ data, handleEditItem, handleDeleteItem })
       <tbody>
         {data.map((item, index) => (
           <tr key={index}>
-            <td>{item.no}</td>
-            <td>{item.title}</td>
-            <td>{item.img}</td>
-            <td style={styles.testimonialColumn}>{item.desc}</td>
+            <td>{index + 1}</td>
+            <td>{item.anggaran_program}</td>
+            <td>
+              <img src={item.dokumentasi} alt="Dokumentasi" style={styles.image} />
+            </td>
+            <td style={styles.testimonialColumn}>{item.testimoni}</td>
             <td style={styles.actionColumn}>
               <Button variant="warning" onClick={() => handleEditItem(item)} style={styles.actionButton}>
                 <FaEdit />
