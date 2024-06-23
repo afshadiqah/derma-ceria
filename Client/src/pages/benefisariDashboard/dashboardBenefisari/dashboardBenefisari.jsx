@@ -12,13 +12,25 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 const dashboardBenefisari = () => {
   const { data, error } = useSWR("http://localhost:5000/kampanye", fetcher);
 
-  const headers = ["No", "Campaign", "Terkumpul","Target", "Status"];
+  const headers = ["No", "Campaign", "Terkumpul", "Target", "Status"];
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
   // Filter the data based on id_user = 1
   const filteredData = data.filter((kampanye) => kampanye.id_user === 1);
+
+  // Calculate total donations and campaign count
+  const totalDonations = filteredData.reduce((total, kampanye) => total + kampanye.terkumpul, 0);
+  const campaignCount = filteredData.length;
+
+  // Format numbers as currency
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(value);
+  };
 
   const renderTableHeader = () => {
     return headers.map((header, index) => (
@@ -38,8 +50,8 @@ const dashboardBenefisari = () => {
       >
         <td style={{ textAlign: "center" }}>{index + 1}</td>
         <td>{kampanye.kampanye_title}</td>
-        <td style={{ textAlign: "left" }}>{`Rp. ${kampanye.terkumpul}`}</td>
-        <td style={{ textAlign: "left" }}>{`Rp. ${kampanye.target}`}</td>
+        <td style={{ textAlign: "left" }}>{formatCurrency(kampanye.terkumpul)}</td>
+        <td style={{ textAlign: "left" }}>{formatCurrency(kampanye.target)}</td>
         <td style={{ textAlign: "center" }}>
           {new Date(kampanye.end_date) > new Date() ? "Berlangsung" : "Selesai"}
         </td>
@@ -56,7 +68,7 @@ const dashboardBenefisari = () => {
             <Card className={styles.cardDashboard}>
               <Card.Body className="position-relative">
                 <Card.Title className={styles.cardTitle}>Total Donasi</Card.Title>
-                <Card.Text className={styles.cardText}>Rp. 10.000.000</Card.Text>
+                <Card.Text className={styles.cardText}>{formatCurrency(totalDonations)}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
@@ -64,19 +76,21 @@ const dashboardBenefisari = () => {
             <Card className={styles.cardDashboard}>
               <Card.Body>
                 <Card.Title className={styles.cardTitle}>Campaign</Card.Title>
-                <Card.Text className={styles.cardText}>2</Card.Text>
+                <Card.Text className={styles.cardText}>{campaignCount}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={4} className="mb-4">
+          {/* <Col xs={12} sm={6} md={4} lg={4} className="mb-4">
             <Card className={styles.cardDashboard}>
               <Card.Body>
                 <Card.Title className={styles.cardTitle}>Total Pencairan Dana</Card.Title>
                 <Card.Text className={styles.cardText}>Rp. 5.000.000</Card.Text>
               </Card.Body>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
+        <hr />
+        <br />
         <Row>
           <Col>
             <h1 className={styles.h1Title}>Kampanye Anda baru-baru ini</h1>
