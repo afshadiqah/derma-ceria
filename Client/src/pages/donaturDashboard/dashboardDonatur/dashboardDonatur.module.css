@@ -1,0 +1,98 @@
+.dashboardContent {
+    font-family: Helvetica, sans-serif;
+    margin-left: 250px; /* Geser konten dari sidebar */
+    padding: 20px;
+  }
+  
+  .cardBody {
+    border-radius: 10px; /* Radius sudut */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Bayangan */
+  }
+  
+  .cardDashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: auto;
+    margin: 10px 20px 10px 5px; /* Menambahkan jarak ke kanan */
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17);
+  }
+  
+  @media (max-width: 768px) {
+    .dashboardContent {
+      margin-left: 0;
+      padding: 10px;
+    }
+  }
+  
+  .h1Title {
+    font-weight: bold;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .cardText {
+    align-items: center;
+    font-size: 1rem;
+    color: #f8b22d;
+    font-weight: bold;
+  
+  }
+  
+  .input-container {
+    position: relative;
+    width: 100%; /* Changed width to 100% to occupy full width of its container */
+    max-width: 467px; /* Added max-width to maintain responsiveness */
+    margin-left: auto; /* Centering the input container */
+    margin-right: auto; /* Centering the input container */
+  }
+  
+  .input-container img {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 20px;
+  }
+  
+  .input-container input {
+    width: calc(100% - 40px); /* Adjusted input width to occupy remaining space */
+    padding-left: 40px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    width: 28.5rem;
+    height: 38px;
+    box-shadow: none;
+  }
+  
+  
+  .tableHeader {
+    background-color: #f8b22d;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .tableBodyRow:nth-child(odd) {
+    background-color: #fff8e1; /* Warna kuning muda untuk baris ganjil */
+  }
+  
+  .tableBodyRow:nth-child(even) {
+    background-color: #fff3c4; /* Warna kuning sedikit lebih gelap untuk baris genap */
+  }
+  
+  .uploadButton {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

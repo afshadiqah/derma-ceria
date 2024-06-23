@@ -1,0 +1,117 @@
+.trackingContainer {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: calc(100% - 250px); /* Adjust this to be the full width minus the sidebar width */
+    margin: 0 0 0 250px; /* Adjust this to match your sidebar width */
+  }
+  
+  .trackingContainer h1{
+    margin-bottom: 25px;
+    font-size: 30px;
+  }
+  
+  .trackingInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 1rem;
+  }
+  
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .timelineStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 -5px;
+    position: relative;
+    flex: 1;
+  }
+  
+  .circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+  }
+  
+  .timelineLine {
+    position: absolute;
+    top: 7.5px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    z-index: 0;
+  }
+  
+  .historyItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .historyDateTime {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+    margin-buttom: 50px;
+  }
+  
+  .historyDateTime p {
+    margin: 0; 
+    padding: 0;
+    line-height: 1.2;
+    font-size: 12px;
+  }
+  
+  .historyDot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #f8b22d;
+    margin-right: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .historyDescription {
+    flex: 1;
+    margin: 45px 0 45px 0;
+  }
+  
+  .trackingHistory {
+    margin-top: 2rem;
+    position: relative;
+  }
+  
+  .trackingHistory h2 {
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+  
+  .historyItem:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    width: 2px;
+    height: calc(100% - -15px);
+    background-color: #ccc;
+    z-index: 0;
+  }
+  

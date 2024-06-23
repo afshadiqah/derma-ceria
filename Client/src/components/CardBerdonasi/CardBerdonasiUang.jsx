@@ -80,7 +80,7 @@ const CardBerdonasiUang = ({
           </div>
           <div className={styles.amount}>
             <Card.Text>
-              <strong> {formatNumber(terkumpul)} </strong> terkumpul dari Rp {formatNumber(target)}
+              <strong>Rp {formatNumber(terkumpul)} </strong> terkumpul dari Rp {formatNumber(target)}
             </Card.Text>
           </div>
           <div className={styles.textCard}>

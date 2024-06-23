@@ -58,6 +58,10 @@ const CardBerdonasiBarang = ({
         </Card.Header>
         <Card.Body>
           <div className={styles.textCard}>
+            {/* <table>
+              <th>{donasi}</th>
+              <td></td>
+            </table> */}
             <Card.Text>
               {donasi}
               <br />

@@ -1,0 +1,47 @@
+.mainContent {
+    margin-left: 250px; /* Adjust this value according to your sidebar width */
+    padding: 20px;
+}
+
+.dashboardTitle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cardMarginBottom {
+    transform: translateX(-50px); /* Adjust the negative value to move the card left */
+    margin: 0 0 10px -50px;
+}
+
+.testimonialRow {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cardTestimonial {
+    width: 470px;
+    height: auto;
+    padding: 20px;
+    margin: 50px auto 0 -80px; /* Center the testimonial cards horizontally */
+    border-radius: 10px;
+    box-shadow: 0px 4px  rgba(0, 0, 0, 0.1);
+}
+
+.imgTestimonial {
+    width: 90%; /* Adjust to fit the column width */
+    height: auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 0;
+        padding: 10px;
+    }
+    .imgTestimonial {
+        padding: 10px;
+    }
+}

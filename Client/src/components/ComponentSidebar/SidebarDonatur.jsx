@@ -35,7 +35,7 @@ const SidebarDonatur = () => {
         </Nav.Item>
         <div className="mt-auto">
           <Nav.Item className={styles.navItem}>
-            <Nav.Link as={NavLink} to="/profil" className={`${styles.navLinkProfile} text-white`} activeClassName={styles.activeNavLink}>
+            <Nav.Link as={NavLink} to="/ProfileDonatur" className={`${styles.navLinkProfile} text-white`} activeClassName={styles.activeNavLink}>
               <PersonCircle className="me-2" /> Profil
             </Nav.Link>
           </Nav.Item>
