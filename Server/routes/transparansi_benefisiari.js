@@ -25,19 +25,20 @@ router.get("/:id", (req, res) => {
 
 // Endpoint untuk menambahkan transparansi_benefisiari baru
 router.post("/", (req, res) => {
-  const { anggaran_program, dokumentasi, testimoni } = req.body;
-  const query = `INSERT INTO transparansi_benefisiari (anggaran_program, dokumentasi, testimoni) 
-                 VALUES (?, ?, ?)`;
+  const { anggaran_program, dokumentasi, testimoni, id_user } = req.body;
+  const query = `INSERT INTO transparansi_benefisiari (id_user, anggaran_program, dokumentasi, testimoni) 
+                 VALUES (?, ?, ?, ?)`;
 
-  db.query(query, [anggaran_program, dokumentasi, testimoni], (err, result) => {
+  db.query(query, [id_user, anggaran_program, dokumentasi, testimoni], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
     res.json({
       id_transparansibene: result.insertId,
+      id_user,
       anggaran_program,
       dokumentasi,
-      testimoni
+      testimoni,
     });
   });
 });

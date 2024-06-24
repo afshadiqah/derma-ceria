@@ -1,70 +1,56 @@
 import React, { useState } from "react";
-import { Modal, Form, Button } from "react-bootstrap";
-import axios from 'axios';
+import { Modal, Button, Form } from "react-bootstrap";
+import axios from "axios";
 
-const TambahTransparansi = ({ showModal, handleClose }) => {
-  const [judul, setJudul] = useState("");
+const TambahTransparansi = ({ showModal, handleClose, handleSave }) => {
+  const [id_user, setIdUser] = useState("");
+  const [anggaranProgram, setAnggaranProgram] = useState("");
+  const [dokumentasi, setDokumentasi] = useState("");
   const [testimoni, setTestimoni] = useState("");
-  const [fotoTransparansi, setFotoTransparansi] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('anggaran_program', judul);
-    formData.append('testimoni', testimoni);
-    formData.append('dokumentasi', fotoTransparansi);
-
+    const newItem = {
+      id_user:1,
+      anggaran_program: anggaranProgram,
+      dokumentasi,
+      testimoni,
+    };
     try {
-      await axios.post('http://localhost:5000/transparansi_benefesiari', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      await axios.post("http://localhost:5000/transparansi_benefisiari", newItem);
+      handleSave(newItem); // call handleSave to refresh data
       handleClose();
     } catch (error) {
-      console.error('There was an error uploading the data!', error);
+      console.error("Error adding item:", error);
     }
   };
 
   return (
     <Modal show={showModal} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Tambahkan Transparansi Donasi</Modal.Title>
+        <Modal.Title>Tambahkan Transparansi Benefisari</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formJudul">
-            <Form.Label><b>Anggaran Program</b></Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Masukkan Nama Anggaran Program"
-              value={judul}
-              onChange={(e) => setJudul(e.target.value)}
-              required
-            />
+          {/* <Form.Group controlId="formAnggaranProgram">
+            <Form.Label>id_user</Form.Label>
+            <Form.Control type="text" placeholder="Masukkan id user" value={id_user} onChange={(e) => setIdUser(e.target.value)} required />
+          </Form.Group> */}
+          <Form.Group controlId="formAnggaranProgram" style={{ margin: '1rem 0' }}>
+            <Form.Label style={{ fontWeight: 'bold' }}>Anggaran Program</Form.Label>
+            <Form.Control type="text" placeholder="Masukkan Anggaran Program" value={anggaranProgram} onChange={(e) => setAnggaranProgram(e.target.value)} required />
           </Form.Group>
-          <Form.Group controlId="formTestimoni">
-            <Form.Label><b>Testimoni Donasi</b></Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Masukkan testimoni"
-              value={testimoni}
-              onChange={(e) => setTestimoni(e.target.value)}
-              required
-            />
+          <Form.Group controlId="formDokumentasi" style={{ margin: '1rem 0' }}>
+            <Form.Label style={{ fontWeight: 'bold' }}>Dokumentasi</Form.Label>
+            <Form.Control type="text" placeholder="Masukkan URL Dokumentasi" value={dokumentasi} onChange={(e) => setDokumentasi(e.target.value)} required />
           </Form.Group>
-          <Form.Group controlId="formFotoTransparansi">
-            <Form.Label><b>Unggah Dokumentasi</b></Form.Label>
-            <Form.Control
-              type="file"
-              accept="image/*"
-              onChange={(e) => setFotoTransparansi(e.target.files[0])}
-              required
-            />
+          <Form.Group controlId="formTestimoni" style={{ margin: '1rem 0' }}>
+            <Form.Label style={{ fontWeight: 'bold' }}>Testimoni</Form.Label>
+            <Form.Control as="textarea" rows={3} placeholder="Masukkan Testimoni" value={testimoni} onChange={(e) => setTestimoni(e.target.value)} required />
           </Form.Group>
-          <div className="d-flex justify-content-end mt-3">
-            <Button variant="warning" type="submit">
-              Unggah
+          <div className="button-simpan d-flex justify-content-end mt-3">
+            <Button className="btn btn-warning" variant="primary" type="submit">
+              Simpan
             </Button>
           </div>
         </Form>
