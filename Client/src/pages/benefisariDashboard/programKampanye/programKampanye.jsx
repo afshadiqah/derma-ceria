@@ -66,19 +66,22 @@ const programKampanye = () => {
           </div>
         </Row>
         <Row className="gx-4 gy-4">
-          {currentPageData.map((kampanye) => (
-            <Col xs={12} sm={6} md={4} className={styles.cardMargin} key={kampanye.id_kampanye}>
-              <CardProgramKampanye
-                imageSrc={kampanye.kampanye_pic_cover}
-                label={kampanye.kampanye_kategori}
-                title={kampanye.kampanye_title}
-                dari={kampanye.target.toLocaleString("id-ID")}
-                progress={(kampanye.terkumpul / kampanye.target) * 100}
-                terkumpul={kampanye.terkumpul.toLocaleString("id-ID")}
-                LinkButton={`/detail/${kampanye.id_kampanye}`} // Update the link button to navigate to the detail page with id_kampanye
-              />
-            </Col>
-          ))}
+          {currentPageData.map((kampanye) => {
+            const status = new Date(kampanye.end_date) > new Date() ? "Berlangsung" : "Selesai";
+            return (
+              <Col xs={12} sm={6} md={4} className={styles.cardMargin} key={kampanye.id_kampanye}>
+                <CardProgramKampanye
+                  imageSrc={kampanye.kampanye_pic_cover}
+                  label={`${kampanye.kampanye_kategori}`}
+                  title={kampanye.kampanye_title}
+                  dari={kampanye.target.toLocaleString("id-ID")}
+                  progress={(kampanye.terkumpul / kampanye.target) * 100}
+                  terkumpul={kampanye.terkumpul.toLocaleString("id-ID")}
+                  LinkButton={`/detail/${kampanye.id_kampanye}`} // Update the link button to navigate to the detail page with id_kampanye
+                />
+              </Col>
+            );
+          })}
         </Row>
         <Row className="justify-content-center mt-4">
           <CustomPagination
