@@ -8,35 +8,35 @@ import styles from "./CardBerdonasi.module.css";
 import ProfileComponent from "../../components/ProfileComponent";
 import ShareSocialMedia from "../../components/ShareSocialMedia/ShareSocialMedia"; // Import komponen ShareSocialMedia
 
-const CardBerdonasiBarang = ({ 
-  title, 
-  danaterkumpul, 
-  progress, 
-  target, 
-  donasi, 
-  dibagikan, 
-  hari, 
-  buttonDonasi, 
-  buttonShare, 
-  rincianpenggunaandana, 
-  imageProfile, 
-  titleProfile, 
-  jumlahUang, 
-  namaPenerima, 
-  waktu, 
-  semuadonasi, 
-  imageProfile2, 
-  titleProfile2, 
-  jumlahUang2, 
-  namaPenerima2, 
-  waktu2, 
-  semuadonasi2, 
-  imageProfile3, 
-  titleProfile3, 
-  jumlahUang3, 
-  namaPenerima3, 
-  waktu3, 
-  semuadonasi3 
+const CardBerdonasiBarang = ({
+  title,
+  danaterkumpul,
+  progress,
+  target,
+  donasi,
+  dibagikan,
+  hari,
+  buttonDonasi,
+  buttonShare,
+  rincianpenggunaandana,
+  imageProfile,
+  titleProfile,
+  jumlahUang,
+  namaPenerima,
+  waktu,
+  semuadonasi,
+  imageProfile2,
+  titleProfile2,
+  jumlahUang2,
+  namaPenerima2,
+  waktu2,
+  semuadonasi2,
+  imageProfile3,
+  titleProfile3,
+  jumlahUang3,
+  namaPenerima3,
+  waktu3,
+  semuadonasi3,
 }) => {
   const [showShareModal, setShowShareModal] = useState(false); // State untuk modal
 
@@ -58,25 +58,22 @@ const CardBerdonasiBarang = ({
         </Card.Header>
         <Card.Body>
           <div className={styles.textCard}>
-            {/* <table>
-              <th>{donasi}</th>
-              <td></td>
-            </table> */}
-            <Card.Text>
-              {donasi}
-              <br />
-              Donasi
-            </Card.Text>
-            <Card.Text>
-              {dibagikan}
-              <br />
-              Dibagikan
-            </Card.Text>
-            <Card.Text>
-              {hari}
-              <br />
-              Hari
-            </Card.Text>
+            <table className={styles.tableberdonasi}>
+              <thead>
+                <tr>
+                  <th>{donasi}</th>
+                  <th>{dibagikan}</th>
+                  <th>{hari}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Donasi</td>
+                  <td>Dibagikan</td>
+                  <td>Hari</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div className={styles.ButtonDonasi}>
@@ -149,12 +146,7 @@ const CardBerdonasiBarang = ({
           </div>
         </Card.Body>
       </Card>
-      <ShareSocialMedia 
-        showShareModal={showShareModal} 
-        handleCloseShareModal={handleCloseShareModal} 
-        shareUrl={window.location.href} 
-        shareText={`Lihat bukti pembayaran saya di ${window.location.href}`} 
-      />
+      <ShareSocialMedia showShareModal={showShareModal} handleCloseShareModal={handleCloseShareModal} shareUrl={window.location.href} shareText={`Lihat bukti pembayaran saya di ${window.location.href}`} />
     </div>
   );
 };

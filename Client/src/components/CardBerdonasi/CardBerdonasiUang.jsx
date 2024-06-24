@@ -63,121 +63,117 @@ const CardBerdonasiUang = ({
   };
 
   return (
-    <div className="w-100"> 
-    <div className={styles.bodyCardBerdonasi}>
-      <Card className={styles.CardBerdonasi}>
-        <Card.Header>
-          <div className={styles.titleCard}>
-            <Card.Text>{title} Dana Terkumpul</Card.Text>
-          </div>
-        </Card.Header>
-        <Card.Body>
-          <div className={styles.Danaterkumpul}>
-            <Card.Text>Rp {formatNumber(terkumpul)}</Card.Text>
-          </div>
-          <div className={styles.progressBar}>
-            <ProgressBar animated now={progress} variant="warning" style={{ width: "100%", height: "10px" }} />
-          </div>
-          <div className={styles.amount}>
+    <div className="w-100">
+      <div className={styles.bodyCardBerdonasi}>
+        <Card className={styles.CardBerdonasi}>
+          <Card.Header>
+            <div className={styles.titleCard}>
+              <Card.Text>{title} Dana Terkumpul</Card.Text>
+            </div>
+          </Card.Header>
+          <Card.Body>
+            <div className={styles.Danaterkumpul}>
+              <Card.Text>Rp {formatNumber(terkumpul)}</Card.Text>
+            </div>
+            <div className={styles.progressBar}>
+              <ProgressBar animated now={progress} variant="warning" style={{ width: "100%", height: "10px" }} />
+            </div>
+            <div className={styles.amount}>
             <Card.Text>
-              <strong>Rp {formatNumber(terkumpul)} </strong> terkumpul dari Rp {formatNumber(target)}
+              <strong>Rp {terkumpul ? terkumpul.toLocaleString() : 0}</strong> terkumpul dari Rp {target ? target.toLocaleString() : 0}
             </Card.Text>
           </div>
-          <div className={styles.textCard}>
-            <Card.Text>
-              {donasi}
-              <br />
-              Donasi
-            </Card.Text>
-            <Card.Text>
-              {dibagikan}
-              <br />
-              Dibagikan
-            </Card.Text>
-            <Card.Text>
-              {hari}
-              <br />
-              Hari
-            </Card.Text>
-          </div>
+            <div className={styles.textCard}>
+              <table className={styles.tableberdonasi}>
+                <thead>
+                  <tr>
+                    <th>{donasi}</th>
+                    <th>{dibagikan}</th>
+                    <th>{hari}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Donasi</td>
+                    <td>Dibagikan</td>
+                    <td>Hari</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div className={styles.ButtonDonasi}>
-            <Link to={buttonDonasi} className={`btn btn-warning ${styles.btnbuttonDonasi}`}>
-              Donasi
-              <img src={Boxcoin} alt="icon box" className={`me-2 img-fluid ${styles.iconBoxcoin}`} />
-            </Link>
-          </div>
-          <div className={styles.ButtonShare}>
-            <button onClick={handleShareClick} className={`btn btn-outline-secondary ${styles.btnbuttonShare}`}>
-              Dibagikan
-              <img src={Shareicon} alt="icon share" className={`me-2 img-fluid ${styles.iconShare}`} />
-            </button>
-          </div>
-          <div className={styles.customRow}>
-            <Card className={styles.cardStyle}>
-              <ProfileComponent />
-              <hr className={styles.hrStyle} />
-              <Link to={rincianpenggunaandana} className={styles.linkStyle}>
-                Rincian Penggunaan Dana
+            <div className={styles.ButtonDonasi}>
+              <Link to={buttonDonasi} className={`btn btn-warning ${styles.btnbuttonDonasi}`}>
+                Donasi
+                <img src={Boxcoin} alt="icon box" className={`me-2 img-fluid ${styles.iconBoxcoin}`} />
               </Link>
-            </Card>
-          </div>
-          <div className={styles.titleProfile}>
-            <Card.Text>{titleProfile} Rincian Donasi</Card.Text>
-          </div>
+            </div>
+            <div className={styles.ButtonShare}>
+              <button onClick={handleShareClick} className={`btn btn-outline-secondary ${styles.btnbuttonShare}`}>
+                Dibagikan
+                <img src={Shareicon} alt="icon share" className={`me-2 img-fluid ${styles.iconShare}`} />
+              </button>
+            </div>
+            <div className={styles.customRow}>
+              <Card className={styles.cardStyle}>
+                <ProfileComponent />
+                <hr className={styles.hrStyle} />
+                <Link to={rincianpenggunaandana} className={styles.linkStyle}>
+                  Rincian Penggunaan Dana
+                </Link>
+              </Card>
+            </div>
+            <div className={styles.titleProfile}>
+              <Card.Text>{titleProfile} Rincian Donasi</Card.Text>
+            </div>
 
-          <div className={styles.donationCardProfile}>
-            <div className={styles.imageCard}>
-              <Card.Img src={imageProfile} />
+            <div className={styles.donationCardProfile}>
+              <div className={styles.imageCard}>
+                <Card.Img src={imageProfile} />
+              </div>
+              <div className={styles.textContainer}>
+                <Card.Title className={styles.jumlahUang}>{jumlahUang}</Card.Title>
+                <Card.Title className={styles.namaPenerima}>{namaPenerima}</Card.Title>
+              </div>
+              <div className={styles.textWaktu}>
+                <Card.Title className={styles.waktu}>{waktu}</Card.Title>
+              </div>
             </div>
-            <div className={styles.textContainer}>
-              <Card.Title className={styles.jumlahUang}>{jumlahUang}</Card.Title>
-              <Card.Title className={styles.namaPenerima}>{namaPenerima}</Card.Title>
-            </div>
-            <div className={styles.textWaktu}>
-              <Card.Title className={styles.waktu}>{waktu}</Card.Title>
-            </div>
-          </div>
 
-          <div className={styles.donationCardProfile}>
-            <div className={styles.imageCard}>
-              <Card.Img src={imageProfile2} />
+            <div className={styles.donationCardProfile}>
+              <div className={styles.imageCard}>
+                <Card.Img src={imageProfile2} />
+              </div>
+              <div className={styles.textContainer}>
+                <Card.Title className={styles.jumlahUang}>{jumlahUang2}</Card.Title>
+                <Card.Title className={styles.namaPenerima}>{namaPenerima2}</Card.Title>
+              </div>
+              <div className={styles.textWaktu}>
+                <Card.Title className={styles.waktu}>{waktu2}</Card.Title>
+              </div>
             </div>
-            <div className={styles.textContainer}>
-              <Card.Title className={styles.jumlahUang}>{jumlahUang2}</Card.Title>
-              <Card.Title className={styles.namaPenerima}>{namaPenerima2}</Card.Title>
+            <div className={styles.donationCardProfile}>
+              <div className={styles.imageCard}>
+                <Card.Img src={imageProfile3} />
+              </div>
+              <div className={styles.textContainer}>
+                <Card.Title className={styles.jumlahUang}>{jumlahUang3}</Card.Title>
+                <Card.Title className={styles.namaPenerima}>{namaPenerima3}</Card.Title>
+              </div>
+              <div className={styles.textWaktu}>
+                <Card.Title className={styles.waktu}>{waktu3}</Card.Title>
+              </div>
             </div>
-            <div className={styles.textWaktu}>
-              <Card.Title className={styles.waktu}>{waktu2}</Card.Title>
+            <div>
+              <hr className={styles.hrStyle} />
+              <Nav.Link to={semuadonasi} className={styles.linkStyle}>
+                Lihat semua Donasi
+              </Nav.Link>
             </div>
-          </div>
-          <div className={styles.donationCardProfile}>
-            <div className={styles.imageCard}>
-              <Card.Img src={imageProfile3} />
-            </div>
-            <div className={styles.textContainer}>
-              <Card.Title className={styles.jumlahUang}>{jumlahUang3}</Card.Title>
-              <Card.Title className={styles.namaPenerima}>{namaPenerima3}</Card.Title>
-            </div>
-            <div className={styles.textWaktu}>
-              <Card.Title className={styles.waktu}>{waktu3}</Card.Title>
-            </div>
-          </div>
-          <div>
-            <hr className={styles.hrStyle} />
-            <Nav.Link to={semuadonasi} className={styles.linkStyle}>
-              Lihat semua Donasi
-            </Nav.Link>
-          </div>
-        </Card.Body>
-      </Card>
-      <ShareSocialMedia
-        showShareModal={showShareModal}
-        handleCloseShareModal={handleCloseShareModal}
-        shareUrl={window.location.href}
-        shareText={`Lihat bukti pembayaran saya di ${window.location.href}`}
-      />
-    </div>
+          </Card.Body>
+        </Card>
+        <ShareSocialMedia showShareModal={showShareModal} handleCloseShareModal={handleCloseShareModal} shareUrl={window.location.href} shareText={`Lihat bukti pembayaran saya di ${window.location.href}`} />
+      </div>
     </div>
   );
 };
