@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { FaPlus } from 'react-icons/fa';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import axios from 'axios';
 import BenefisariTableTransparansi from "./BenefisariTableTransparansi";
 import TambahTransparansi from "./TambahTransparansi";
@@ -12,10 +12,17 @@ const fetcher = url => axios.get(url).then(res => res.data);
 
 const TransparansiBenefisari = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
   const { data, error } = useSWR('http://localhost:5000/transparansi_benefisiari', fetcher);
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
+  const handleCloseConfirmModal = () => setShowConfirmModal(false);
+  const handleShowConfirmModal = (item) => {
+    setItemToDelete(item);
+    setShowConfirmModal(true);
+  };
 
   if (error) return <div>Failed to load data</div>;
   if (!data) return <div>Loading...</div>;
@@ -29,8 +36,17 @@ const TransparansiBenefisari = () => {
     console.log("Edit item:", item);
   };
 
-  const handleDeleteItem = (item) => {
-    console.log("Delete item:", item);
+  const handleDeleteItem = async () => {
+    if (itemToDelete) {
+      try {
+        await axios.delete(`http://localhost:5000/transparansi_benefisiari/${itemToDelete.id_transparansibene}`);
+        // Refresh data setelah menghapus item
+        mutate('http://localhost:5000/transparansi_benefisiari');
+        handleCloseConfirmModal();
+      } catch (error) {
+        console.error('Error deleting item:', error);
+      }
+    }
   };
 
   return (
@@ -61,12 +77,29 @@ const TransparansiBenefisari = () => {
               data={data}
               handleAddItem={handleAddItem}
               handleEditItem={handleEditItem}
-              handleDeleteItem={handleDeleteItem}
+              handleShowConfirmModal={handleShowConfirmModal}
             />
           </Col>
         </Row>
         <TambahTransparansi showModal={showModal} handleClose={handleCloseModal} />
       </Container>
+
+      <Modal show={showConfirmModal} onHide={handleCloseConfirmModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Konfirmasi Penghapusan</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Apakah Anda yakin ingin menghapus item ini?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseConfirmModal}>
+            Batal
+          </Button>
+          <Button variant="danger" onClick={handleDeleteItem}>
+            Hapus
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

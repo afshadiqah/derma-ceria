@@ -20,12 +20,12 @@ const styles = {
     marginRight: '5px',
   },
   image: {
-    width: '100px', // Set the width of the image
-    height: 'auto', // Set the height to auto to maintain aspect ratio
+    width: '100px',
+    height: 'auto',
   },
 };
 
-const BenefisariTableTransparansi = ({ data, handleEditItem, handleDeleteItem }) => {
+const BenefisariTableTransparansi = ({ data, handleEditItem, handleShowConfirmModal }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -50,7 +50,7 @@ const BenefisariTableTransparansi = ({ data, handleEditItem, handleDeleteItem })
               <Button variant="warning" onClick={() => handleEditItem(item)} style={styles.actionButton}>
                 <FaEdit />
               </Button>
-              <Button variant="warning" onClick={() => handleDeleteItem(item)} style={styles.actionButton}>
+              <Button variant="warning" onClick={() => handleShowConfirmModal(item)} style={styles.actionButton}>
                 <FaTrash />
               </Button>
             </td>
