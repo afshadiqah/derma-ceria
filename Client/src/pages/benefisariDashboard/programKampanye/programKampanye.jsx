@@ -1,28 +1,46 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus } from "react-icons/fa";
+import useSWR from "swr";
+import axios from "axios";
 import CardProgramKampanye from "../programKampanye/CardProgramKampanye";
 import TambahKampanye from "../programKampanye/TambahKampanye"; // Import komponen modal baru
+import CustomPagination from "../../../components/Pagination/pagination"; // Import pagination component
 import Search from "../../../assets/icons/search.svg"; // Update the import path
-
-
-import CardImgberlangsung1 from "../../../assets/images/berlangsung1.png";
-import CardImgberlangsung2 from "../../../assets/images/berlangsung2.jpg";
-import CardImgberlangsung3 from "../../../assets/images/berlangsung3.png";
-import CardImgberlangsung4 from "../../../assets/images/berlangsung4.png";
-import CardImgberlangsung5 from "../../../assets/images/berlangsung5.jpg";
-import CardImgberlangsung6 from "../../../assets/images/berlangsung6.jpg";
 
 import styles from "./programKampanye.module.css";
 
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 const programKampanye = () => {
   const [showModal, setShowModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const handleClose = () => {
     setShowModal(false);
   };
 
   const handleShow = () => setShowModal(true);
+
+  const { data, error } = useSWR("http://localhost:5000/kampanye", fetcher);
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
+  // Filter the data based on id_user = 1
+  const filteredData = data.filter((kampanye) => kampanye.id_user === 1);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const currentPageData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className={styles.mainContent}>
@@ -34,83 +52,41 @@ const programKampanye = () => {
           </Col>
           <Col>
             <div className={styles["input-container"]}>
-            <img src={Search} alt="search" />
+              <img src={Search} alt="search" />
               <input type="text" placeholder="Search" className={`form-control mx-2 bg-light ${styles.searchInput}`} />
             </div>
           </Col>
         </Row>
-        <Row className="gx-4 gy-4">
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung1}
-              label="Pendidikan"
-              title="Donasi Pendidikan Anak Yatim & Dhu'afa"
-              dari="50.000.000"
-              progress={100}
-              terkumpul="5.000.000"
-              LinkButton="/detailPendidikan"
-            />
-          </Col>
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung2}
-              label="Pendidikan"
-              title="Berbagi Paket Pendidikan Untuk Masa Depan"
-              dari="50.000.000"
-              progress={0}
-              terkumpul="10.000.000"
-              LinkButton="/detailPendidikan"
-            />
-          </Col>
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung3}
-              label="Bencana"
-              title="Asap Tebal Kebakaran Hutan Kalbar!"
-              dari="500.000.000"
-              progress={70}
-              terkumpul="249.546.876"
-              LinkButton="/detailBencana"
-            />
-          </Col>
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung4}
-              label="Sosial"
-              title="Bantu Guru Pelosok Daerah dengan Sedekah Subuh"
-              dari="50.000.000"
-              progress={0}
-              terkumpul="0"
-              LinkButton="/detailSosial"
-            />
-          </Col>
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung5}
-              label="Kesehatan"
-              title="Bantu Anak dengan Kondisi Kronis Untuk Berobat"
-              dari="116.650.000"
-              progress={60}
-              terkumpul="40.282.072"
-              LinkButton="/detailKesehatan"
-            />
-          </Col>
-          <Col xs={12} sm={6} md={4} className={styles.cardMargin}>
-            <CardProgramKampanye
-              imageSrc={CardImgberlangsung6}
-              label="Pendidikan"
-              title="Gantikan 10.000 Mushaf Untuk Siswa Pelosok"
-              dari="20.000.000"
-              progress={0}
-              terkumpul="4.011.000"
-              LinkButton="/detailPendidikan"
-            />
-          </Col>
+        <Row>
+          <div className={styles.buttonTambahProKam}>
+            <Button variant="warning" className={styles.addButton} onClick={handleShow}>
+              <FaPlus /> Tambahkan Kampanye
+            </Button>
+            <TambahKampanye showModal={showModal} handleClose={handleClose} />
+          </div>
         </Row>
-        <Button variant="warning" className={styles.addButton} onClick={handleShow}>
-          <FaPlus /> Tambahkan Kampanye
-        </Button>
-        <TambahKampanye showModal={showModal} handleClose={handleClose} />
+        <Row className="gx-4 gy-4">
+          {currentPageData.map((kampanye) => (
+            <Col xs={12} sm={6} md={4} className={styles.cardMargin} key={kampanye.id_kampanye}>
+              <CardProgramKampanye
+                imageSrc={kampanye.kampanye_pic_cover}
+                label={kampanye.kampanye_kategori}
+                title={kampanye.kampanye_title}
+                dari={kampanye.target.toLocaleString("id-ID")}
+                progress={(kampanye.terkumpul / kampanye.target) * 100}
+                terkumpul={kampanye.terkumpul.toLocaleString("id-ID")}
+                LinkButton={`/detail/${kampanye.id_kampanye}`} // Update the link button to navigate to the detail page with id_kampanye
+              />
+            </Col>
+          ))}
+        </Row>
+        <Row className="justify-content-center mt-4">
+          <CustomPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </Row>
       </Container>
     </div>
   );
