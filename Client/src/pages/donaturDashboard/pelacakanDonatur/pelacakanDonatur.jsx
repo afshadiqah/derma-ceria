@@ -1,9 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styles from "./pelacakanDonatur.module.css";
 
 const PelacakanDonatur = () => {
-  const [status, setStatus] = useState("Proses");
+  const [status, setStatus] = useState("");
+  const [trackingData, setTrackingData] = useState([]);
 
+  // Mengambil data dari backend menggunakan useEffect
+  useEffect(() => {
+    const fetchTrackingData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/pelacakan_donasi");
+        setTrackingData(response.data);
+
+        // Set status dari data terbaru
+        if (response.data.length > 0) {
+          setStatus(response.data[0].status);
+        }
+      } catch (error) {
+        console.error("Error fetching tracking data:", error);
+      }
+    };
+
+    fetchTrackingData();
+  }, []);
+
+  // Jika data sedang dimuat
+  if (!trackingData.length) {
+    return <div>Please Wait...</div>;
+  }
+
+  const latestUpdate = trackingData[0]; // Asumsi bahwa data terbaru ada di indeks 0
+  
   const trackingHistory = [
     { date: "05 Mei 2024", time: "16.00", description: "Donasi telah sampai diterima oleh yang bersangkutan", status: "Tiba" },
     { date: "05 Mei 2024", time: "05.00", description: "Donasi dalam perjalanan menuju alamat tujuan", status: "Dalam Perjalanan" },
@@ -17,30 +45,32 @@ const PelacakanDonatur = () => {
       <div className={styles.trackingInfo}>
         <div className={styles.col}>
           <p>
-            <strong>No. Tracking</strong>
+            <h5 style={{ fontWeight: "700" }}>No. Tracking</h5>
           </p>
-          <p>08975640329187</p>
+          <p>{latestUpdate.no_tracking}</p>
           <p>
-            <strong>Nama Pengirim</strong>
+            <h5 style={{ fontWeight: "700" }}>Nama Donatur</h5>
           </p>
-          <p>Mr. Leo Dewanto</p>
+          <p>{latestUpdate.name}</p>
         </div>
         <div className={styles.col}>
           <p>
-            <strong>Pengiriman</strong>
+            <h5 style={{ fontWeight: "700" }}>Tanggal Donasi</h5>
           </p>
-          <p>Pembaharuan terakhir Minggu, 05 Mei 2024</p>
           <p>
-            <strong>Kontak Pengirim</strong>
+            {new Intl.DateTimeFormat("id", { month: "long", day: "numeric" }).format(new Date(latestUpdate.date))} {new Date(latestUpdate.date).getFullYear()}
           </p>
-          <p>081234670912</p>
+          <p>
+            <h5 style={{ fontWeight: "700" }}>Kontak Donatur</h5>
+          </p>
+          <p>{latestUpdate.phone}</p>
         </div>
       </div>
 
       <div className={styles.timeline}>
         {["Proses", "Dikemas", "Dikirim", "Dalam Perjalanan", "Tiba"].map((step, index) => (
           <div key={step} className={styles.timelineStep}>
-            <div className={styles.circle} style={{ backgroundColor: status === step ? "#f8b22d" : "#ccc" }}></div>
+            <div className={styles.circle} style={{ backgroundColor: status === step ? "#f8b22d" : "#000000" }}></div>
             <p style={{ color: status === step ? "#f8b22d" : "black" }}>{step}</p>
             {index < 4 && <div className={styles.timelineLine}></div>}
           </div>

@@ -13,33 +13,33 @@ const SidebarBenefisari = () => {
       </NavLink>
       <Nav variant="pills" className="flex-column">
         <Nav.Item className={styles.navItem}>
-          <Nav.Link as={NavLink} to="/dashboardBenefisari" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+          <Nav.Link as={NavLink} to="/dashboardBenefisari" className={`${styles.navLink} text-white`} activeclassname={styles.activeNavLink}>
             <HouseDoor className="me-2" /> Dashboard
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className={styles.navItem}>
-          <Nav.Link as={NavLink} to="/programKampanye" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+          <Nav.Link as={NavLink} to="/programKampanye" className={`${styles.navLink} text-white`} activeclassname={styles.activeNavLink}>
             <VolumeUp className="me-2" /> Program Kampanye
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className={styles.navItem}>
-          <Nav.Link as={NavLink} to="/pelacakanBenefisari" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+          <Nav.Link as={NavLink} to="/pelacakanBenefisari" className={`${styles.navLink} text-white`} activeclassname={styles.activeNavLink}>
             <GeoAlt className="me-2" /> Pelacakan Donasi
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className={styles.navItem}>
-          <Nav.Link as={NavLink} to="/transparansiBenefisari" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+          <Nav.Link as={NavLink} to="/transparansiBenefisari" className={`${styles.navLink} text-white`} activeclassname={styles.activeNavLink}>
             <People className="me-2" /> Transparansi Donasi
           </Nav.Link>
         </Nav.Item>
         <div className="mt-auto">
           <Nav.Item className={styles.navItem}>
-            <Nav.Link as={NavLink} to="/ProfileBenefisari" className={`${styles.navLinkProfile} text-white`} activeClassName={styles.activeNavLink}>
+            <Nav.Link as={NavLink} to="/ProfileBenefisari" className={`${styles.navLinkProfile} text-white`} activeclassname={styles.activeNavLink}>
               <PersonCircle className="me-2" /> Profil
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className={styles.navItem}>
-            <Nav.Link as={NavLink} to="/donasi" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+            <Nav.Link as={NavLink} to="/donasi" className={`${styles.navLink} text-white`} activeclassname={styles.activeNavLink}>
               <BoxArrowRight className="me-2" /> Keluar
             </Nav.Link>
           </Nav.Item>

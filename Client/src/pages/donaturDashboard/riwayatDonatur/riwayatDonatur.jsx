@@ -4,19 +4,40 @@ import { Container, Row, Col, Button, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./riwayatDonatur.module.css";
 
+import useSWR from "swr";
+import axios from "axios";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 const RiwayatDonatur = () => {
+  const { data, error } = useSWR("http://localhost:5000/dashboard_donatur", fetcher);
+
   const headers = ["No", "Tanggal", "Donasi", "Jumlah Donasi", "Program", "Penerima"];
 
-  const data = [
-    ["1", "07-05-2024", "Dana", "Rp. 50.000", "Santunan Yatim", "Yayasan Chahya Ilahi"],
-    ["2", "07-05-2024", "Dana", "Rp. 200.000", "Bantu Dhuafa", "Nenek Sutiem"],
-    ["3", "07-05-2024", "Dana", "Rp. 100.000", "Qurban", "Yayasan Al Huda"],
-    ["4", "07-05-2024", "Barang", "Rp. 1.000.000", "Bantu Sekolah", "Yayasan Adi Bungsu"],
-    ["5", "07-05-2024", "Pakaian", "Rp. 1.000.000", "Bencana", "Panti Asuhan Pelita"],
-    ["6", "07-05-2024", "Dana", "Rp. 2.000.000", "Santunan Yatim", "Panti Asuhan Pelita"],
-  ];
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
 
+  // Filter the data based on id_user = 1
+  const filteredData = data.filter((donasi) => donasi.id_user === 1);
 
+  // Extract user name from the filtered data
+  const userName = filteredData.length > 0 ? filteredData[0].nama_user : "User";
+
+  // Format numbers as currency without decimals
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  };
+
+  // Format date to dd/mm/yyyy
+  const formatDate = (dateString) => {
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
+  };
 
   const renderTableHeader = () => {
     return headers.map((header, index) => (
@@ -27,14 +48,19 @@ const RiwayatDonatur = () => {
   };
 
   const renderTableBody = () => {
-    return data.map((rowData, rowIndex) => (
+    return filteredData.map((donasi, index) => (
       <tr
-        key={rowIndex}
-        style={{ backgroundColor: rowIndex % 2 === 1 ? '#ffcc99' : 'transparent' }}
+        key={donasi.id_dashboarddonatur}
+        style={{
+          backgroundColor: index % 2 === 1 ? "#ffcc99" : "transparent",
+        }} // Warna oranye muda untuk baris ganjil
       >
-        {rowData.map((cellData, cellIndex) => (
-          <td key={cellIndex}>{cellData}</td>
-        ))}
+        <td style={{ textAlign: "center" }}>{index + 1}</td>
+        <td>{formatDate(donasi.tanggal)}</td>
+        <td>{donasi.jenis_donasi}</td>
+        <td style={{ textAlign: "left" }}>{formatCurrency(donasi.jumlah_donasi)}</td>
+        <td>{donasi.program_donasi}</td>
+        <td>{donasi.penerima_donasi}</td>
       </tr>
     ));
   };
@@ -42,7 +68,11 @@ const RiwayatDonatur = () => {
   return (
     <div className={styles.dashboardContent}>
       <Container>
-        <h1 className={`${styles.h1Title}`}>Riwayat Donasi</h1>
+        <Row>
+          <Col>
+            <h1 style={{ fontSize: "30px", fontWeight: "bold", marginTop: "20px", marginBottom: "-20px" }}>Riwayat Donasi</h1>
+          </Col>
+        </Row>
         <Row>
           <div className="container my-5">
             <table className="table table-bordered table-striped position-relative">
